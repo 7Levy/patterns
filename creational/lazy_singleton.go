@@ -23,6 +23,7 @@ func SafeLazySingleton1() LazySingleton {
 
 //2.懒汉实现-线程安全
 func SafeLazySingleton2() LazySingleton {
+	//加锁
 	mu.Lock()
 	defer mu.Unlock()
 	if instance == nil {
