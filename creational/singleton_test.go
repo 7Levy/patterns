@@ -5,9 +5,9 @@ import (
 	"testing"
 )
 
-func TestNew(t *testing.T) {
-	s1 := newSingleton()
+func TestNewSingleton(t *testing.T) {
+	s1 := NewSingleton()
 	s1["this"] = "one"
-	s2 := newSingleton()
+	s2 := NewSingleton()
 	fmt.Println("This is", s2["this"])
 }

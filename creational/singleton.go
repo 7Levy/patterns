@@ -3,17 +3,20 @@ package creational
 import "sync"
 
 //单例模式
-//单例类型
-type singleton map[string]string
+
+//1.懒汉式
+type Singleton map[string]string
 
 var (
 	once     sync.Once
-	instance singleton
+	instance Singleton
 )
 
-func newSingleton() singleton {
+func NewSingleton() Singleton {
 	once.Do(func() {
-		instance = make(singleton)
+		instance = make(Singleton)
 	})
 	return instance
 }
+
+//2.饿汉式
