@@ -1,8 +1,13 @@
 package creational
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestNew(t *testing.T) {
-	s := NewSingleton()
-
+	s1 := NewSingleton()
+	s1["this"] = "one"
+	s2 := NewSingleton()
+	fmt.Println("This is", s2["this"])
 }
