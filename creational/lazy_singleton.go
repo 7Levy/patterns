@@ -2,7 +2,7 @@ package creational
 
 import "sync"
 
-//单例模式
+//懒汉单例模式
 
 type LazySingleton map[string]string
 
