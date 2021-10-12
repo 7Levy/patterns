@@ -12,7 +12,7 @@ var (
 	instance Singleton
 )
 
-func NewSingleton() Singleton {
+func NewLazySingleton() Singleton {
 	once.Do(func() {
 		instance = make(Singleton)
 	})
