@@ -6,8 +6,8 @@ import (
 )
 
 func TestNew(t *testing.T) {
-	s1 := NewSingleton()
+	s1 := newSingleton()
 	s1["this"] = "one"
-	s2 := NewSingleton()
+	s2 := newSingleton()
 	fmt.Println("This is", s2["this"])
 }

@@ -11,7 +11,7 @@ var (
 	instance singleton
 )
 
-func NewSingleton() singleton {
+func newSingleton() singleton {
 	once.Do(func() {
 		instance = make(singleton)
 	})
