@@ -12,8 +12,8 @@ var (
 	mu       sync.Mutex
 )
 
-//1.懒汉实现-非线程安全
-func UnsafeLazySingleton() LazySingleton {
+//1.懒汉实现-线程安全
+func SafeLazySingleton1() LazySingleton {
 	//sync.Once控制只执行一次创建实例
 	once.Do(func() {
 		instance = make(LazySingleton)
@@ -22,9 +22,17 @@ func UnsafeLazySingleton() LazySingleton {
 }
 
 //2.懒汉实现-线程安全
-func SafeLazySingleton() LazySingleton {
+func SafeLazySingleton2() LazySingleton {
 	mu.Lock()
 	defer mu.Unlock()
+	if instance == nil {
+		instance = make(LazySingleton)
+	}
+	return instance
+}
+
+//3.懒汉实现-非线程安全
+func UnsafeLazySingleton() LazySingleton {
 	if instance == nil {
 		instance = make(LazySingleton)
 	}
