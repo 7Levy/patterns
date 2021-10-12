@@ -12,7 +12,7 @@ var (
 	mu       sync.Mutex
 )
 
-//1.懒汉实现-线程安全
+//1.懒汉实现-双重检查且线程安全
 func SafeLazySingleton1() LazySingleton {
 	//sync.Once控制只执行一次创建实例
 	once.Do(func() {
