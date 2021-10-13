@@ -25,17 +25,17 @@ func (pc *ProgrammerCreator) Create() Worker {
 	return s
 }
 
-type Farmer struct {
-}
-
-func (f *Farmer) Work(task *string) {
-	fmt.Println("Farmer process", *task)
-}
-
-type FarmerCreator struct {
-}
-
-func (fc *FarmerCreator) Create() Worker {
-	s := new(Farmer)
-	return s
-}
+//type Farmer struct {
+//}
+//
+//func (f *Farmer) Work(task *string) {
+//	fmt.Println("Farmer process", *task)
+//}
+//
+//type FarmerCreator struct {
+//}
+//
+//func (fc *FarmerCreator) Create() Worker {
+//	s := new(Farmer)
+//	return s
+//}

@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+//操作符产品
 type operation struct {
 }
 
@@ -12,6 +13,7 @@ type cal interface {
 	cal(int, int) (float64, error)
 }
 
+//加法产品
 type operationAdd struct {
 	operation
 }
@@ -47,8 +49,10 @@ func (o *operationDiv) cal(num1, num2 int) (float64, error) {
 	return float64(num1 / num2), nil
 }
 
+//一个操作符工厂
 type operationFactory struct{}
 
+//根据特性生产不同的运算产品
 func (o *operationFactory) createOperation(op string) cal {
 	switch op {
 	case "+":
