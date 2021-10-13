@@ -3,39 +3,35 @@ package creational
 import "fmt"
 
 type Worker interface {
-	Work(task *string)
+	Cal(int, int) (float64, error)
 }
 
 type WorkerCreator interface {
 	Create() Worker
 }
 
-type Programmer struct {
+//数学运算产品族
+type ProgrammerOperation struct {
 }
 
-func (p *Programmer) Work(task *string) {
-	fmt.Println("Programmer process", *task)
+//数学运算产品族-加法
+func (p *ProgrammerOperation) Cal(num1 int, num2 int) (float64, error) {
+	fmt.Println("result", num1+num2)
+	return float64(num1 + num2), nil
 }
 
+//数学运算产品族-减法
+func (p *ProgrammerOperation) Minus(num1 int, num2 int) (float64, error) {
+	fmt.Println("result", num1+num2)
+	return float64(num1 - num2), nil
+}
+
+//抽象工厂
 type ProgrammerCreator struct {
 }
 
-func (pc *ProgrammerCreator) Create() Worker {
-	s := new(Programmer)
+//创建数学运算产品的工厂
+func (pc *ProgrammerCreator) CreateOperation() Worker {
+	s := new(ProgrammerOperation)
 	return s
 }
-
-//type Farmer struct {
-//}
-//
-//func (f *Farmer) Work(task *string) {
-//	fmt.Println("Farmer process", *task)
-//}
-//
-//type FarmerCreator struct {
-//}
-//
-//func (fc *FarmerCreator) Create() Worker {
-//	s := new(Farmer)
-//	return s
-//}
