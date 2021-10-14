@@ -1,74 +1,76 @@
 package creational
 
-import (
-	"errors"
-	"fmt"
-)
+import "fmt"
 
-//操作符产品
-type operation struct {
+type animal struct {
 }
 
-type cal interface {
-	cal(int, int) (float64, error)
+//动物行为接口
+type Behavior interface {
+	say()
 }
 
-//加法产品
-type operationAdd struct {
-	operation
+type dog struct {
+	animal
 }
 
-func (o *operationAdd) cal(num1, num2 int) (float64, error) {
-	return float64(num1 + num2), nil
+type cat struct {
+	animal
 }
 
-type operationMinus struct {
-	operation
+type pig struct {
+	animal
 }
 
-func (o *operationMinus) cal(num1 int, num2 int) (float64, error) {
-	return float64(num1 - num2), nil
+func (d *dog) say() {
+	fmt.Println("I am a dog.")
 }
 
-type operationMulti struct {
-	operation
+func (c *cat) say() {
+	fmt.Println("I am a cat.")
 }
 
-func (o *operationMulti) cal(num1 int, num2 int) (float64, error) {
-	return float64(num1 * num2), nil
+func (p *pig) say() {
+	fmt.Println("I am a pig.")
 }
 
-type operationDiv struct {
-	operation
+//工厂接口
+type Factory interface {
+	Create() Behavior
 }
 
-func (o *operationDiv) cal(num1, num2 int) (float64, error) {
-	if num2 == 0 {
-		return 0, errors.New("除法运算中除数不能为0")
-	}
-	return float64(num1 / num2), nil
+//生产狗的工厂
+type dogFactory struct {
 }
 
-//一个操作符工厂
-type operationFactory struct{}
-
-//根据特性生产不同的运算产品
-func (o *operationFactory) createOperation(op string) cal {
-	switch op {
-	case "+":
-		return new(operationAdd)
-	case "-":
-		return new(operationMinus)
-	case "*":
-		return new(operationMulti)
-	case "/":
-		return new(operationDiv)
-	}
-	return nil
+func (df *dogFactory) Create() Behavior {
+	return new(dog)
 }
 
-func NewFactory(data string) {
-	o := &operationFactory{}
-	cal := o.createOperation(data)
-	fmt.Printf("%T\n", cal)
+//生产猫的工厂
+type catFactory struct {
+}
+
+func (cf *catFactory) Create() Behavior {
+	return new(cat)
+}
+
+//生产猪的工厂
+type pigFactory struct {
+}
+
+func (pf *pigFactory) Create() Behavior {
+	return new(pig)
+}
+
+func New() {
+	df := &dogFactory{}
+	cf := &catFactory{}
+	pg := &pigFactory{}
+	dog := df.Create()
+	cat := cf.Create()
+	pig := pg.Create()
+	dog.say()
+	cat.say()
+	pig.say()
 }
