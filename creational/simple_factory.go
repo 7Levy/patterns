@@ -1,5 +1,6 @@
 package creational
 
+//一个工厂生产共同产品接口的产品
 import (
 	"errors"
 	"fmt"

@@ -2,6 +2,8 @@ package creational
 
 import "fmt"
 
+//一个抽象工厂生产mac和windows工厂，定义好工厂接口，生产系列产品
+
 //键盘接口
 type Keyboard interface {
 	input()

@@ -1,5 +1,6 @@
 package creational
 
+//多个工厂，每个工厂生产一种商品
 import "fmt"
 
 type animal struct {
