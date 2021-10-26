@@ -1,4 +1,4 @@
-package creational
+package structural
 
 import (
 	"fmt"
