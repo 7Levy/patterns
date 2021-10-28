@@ -29,7 +29,7 @@ func TestEmployee(t *testing.T) {
 	ceo.PrintSubordinates()
 
 	ceo.Remove(headSales)
-	ceo.Remove(headMarketing)
+	//ceo.Remove(headMarketing)
 	fmt.Println("")
 	ceo.PrintSubordinates()
 

@@ -24,7 +24,7 @@ func (e *Employee) Add(ee *Employee) {
 func (e *Employee) Remove(ee *Employee) {
 	target := e.subordinates[:0]
 	for _, item := range e.subordinates {
-		if item == ee {
+		if item != ee {
 			target = append(target, item)
 		}
 	}
